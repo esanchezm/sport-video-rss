@@ -21,15 +21,15 @@ server.get('/', (req, res, next) => {
     $('a[title=TORRENT]').each(function(i, element) {
       var url = $(this).attr("href");
       var title = $(this).parent().parent().find('a.style3').text();
-      
+
       feed.item({
         title: title,
-        // For this specific site, the URL in the href is 
+        // For this specific site, the URL in the href is
         // relative, so I need to append it to the site URK
         url: torrentSite + url
       });
     });
-    
+
     res.status(200).send(feed.xml({indent: true}));
     }
   );
